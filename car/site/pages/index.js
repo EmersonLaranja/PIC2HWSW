@@ -15,6 +15,22 @@ export default function Home() {
     socket.emit("comando", comando);
   }
 
+  let intervalRef = null;
+
+  function onMouseDown(p1, p2) {
+    intervalRef = setInterval(() => {
+      // console.log(e.type);
+      sendSocket([p1, p2]);
+    }, 50);
+  }
+
+  function onMouseUp(e) {
+    if (intervalRef != null) {
+      clearInterval(intervalRef);
+      sendSocket(["P", "P"]);
+    }
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -34,13 +50,20 @@ export default function Home() {
         </button>
         <button onClick={() => sendSocket(["P", "P"])}>Para</button>
       </main> */}
-      <div onMouseMove={() => console.log("INDO")}>TESTE</div>
 
       <div className={styles.main}>
-        <button onClick={() => sendSocket(["F", "F"])}>FRENTE</button>
-        <button onClick={() => sendSocket(["T", "T"])}>TRÁS</button>
-        <button onClick={() => sendSocket(["F", "P"])}>DIREITA</button>
-        <button onClick={() => sendSocket(["P", "F"])}>ESQUERDA</button>
+        <button onMouseDown={() => onMouseDown("F", "F")} onMouseUp={onMouseUp}>
+          FRENTE
+        </button>
+        <button onMouseDown={() => onMouseDown("T", "T")} onMouseUp={onMouseUp}>
+          TRÁS
+        </button>
+        <button onMouseDown={() => onMouseDown("F", "P")} onMouseUp={onMouseUp}>
+          DIREITA
+        </button>
+        <button onMouseDown={() => onMouseDown("P", "F")} onMouseUp={onMouseUp}>
+          ESQUERDA
+        </button>
         <button onClick={() => sendSocket(["P", "P"])}>Para</button>
       </div>
     </div>

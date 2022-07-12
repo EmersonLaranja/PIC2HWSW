@@ -7,6 +7,8 @@
   <%- include('./partials/head.ejs') %>
   <body class="page_display">
     <div class="main_content">
+      <!-- <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.min.js"></script> -->
+      <!-- <script src="https://unpkg.com/ml5@0.5.0/dist/ml5.min.js"></script> -->
       <div class="page_title"><h1 class="tcenter">Camera relay</h1></div>
       <div class="tcenter">
         <canvas id="canvas">
@@ -20,79 +22,43 @@
       let resultsFromImage = [];
 
       function preload() {
+        // classifier = ml5.imageClassifier('MobileNet');
         classifier = ml5.objectDetector("cocossd");
+        // img = loadImage(
+        //   "https://images-na.ssl-images-amazon.com/images/I/71+mDoHG4mL.png"
+        // );
+        // img = loadImage('https://c.tenor.com/4au2TL7vYXcAAAAC/vilnius-traffic.gif');
       }
 
-      // function setup() {
-      //   createCanvas(400, 400);
-      //   classifier.classify(img, gotResult);
-
-      //   image(img, 0, 0);
-      // }
-
-      // function gotResult(error, results) {
-      //   if (results) {
-      //     resultsFromImage = results;
-      //     console.log(resultsFromImage);
-      //   }
-      //   // if (error) {
-      //   //   console.error(error);
-      //   // } else {
-      //   // The results are in an array ordered by confidence.
-      //   // console.log(results);
-      //   // createDiv(`Label: ${results[0].label}`);
-      //   // createDiv(`Confidence: ${nf(results[0].confidence, 0, 2)}`);
-      //   // }
-      // }
-
-      function gotDetections(error, results) {
+      function setup() {
+        createCanvas(1920, 1080);
+      }
+      function gotResult(error, results) {
         if (error) {
           console.error(error);
         }
-        console.log(results);
-        detections = results;
 
-        if (detections) {
-        }
-        // detector.detect(img, gotDetections);
+        resultsFromImage = results;
+        console.log("OPA" + results);
+        // drawImage();
+
+        // createDiv('Label: ' + results[0].label);
+        // createDiv('Confidence: ' + nf(results[0].confidence, 0, 2));
       }
 
-      // function draw() {
-      //   image(img, 0, 0);
-
-      //   for (let i = 0; i < resultsFromImage.length; i++) {
-      //     let object = resultsFromImage[i];
-      //     stroke(0, 255, 0);
-      //     strokeWeight(4);
-      //     noFill();
-      //     rect(object.x, object.y, object.width, object.height);
-      //     stroke(0, 0, 0);
-      //     fill(255);
-      //     textSize(24);
-      //     text(object.label, object.x + 10, object.y + 25);
-      //   }
-      // }
       function draw() {
-        // Clear part of the canvas
-        ctx.fillStyle = "#000000";
-        ctx.fillRect(0, 0, width, height);
+        image(img, 0, 0);
 
-        ctx.drawImage(img, 0, 0);
-        for (let i = 0; i < objects.length; i += 1) {
-          ctx.font = "16px Arial";
-          ctx.fillStyle = "green";
-          ctx.fillText(objects[i].label, objects[i].x + 4, objects[i].y + 16);
-
-          ctx.beginPath();
-          ctx.rect(
-            objects[i].x,
-            objects[i].y,
-            objects[i].width,
-            objects[i].height
-          );
-          ctx.strokeStyle = "green";
-          ctx.stroke();
-          ctx.closePath();
+        for (let i = 0; i < resultsFromImage.length; i++) {
+          let object = resultsFromImage[i];
+          stroke(0, 255, 0);
+          strokeWeight(4);
+          noFill();
+          rect(object.x, object.y, object.width, object.height);
+          stroke(0, 0, 0);
+          fill(255);
+          textSize(24);
+          text(object.label, object.x + 10, object.y + 25);
         }
       }
 
@@ -129,10 +95,12 @@
           canvas.height
         ); // destination rectangle
       };
+
       ws.onmessage = function (message) {
         var url = URL.createObjectURL(message.data);
         img.src = url;
-        classifier.detect(img, gotDetections);
+        clear();
+        classifier.detect(img, gotResult);
       };
     </script>
   </body>
