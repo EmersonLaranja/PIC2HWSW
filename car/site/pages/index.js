@@ -51,6 +51,12 @@ export default function Home() {
         <button onClick={() => sendSocket(["P", "P"])}>Para</button>
       </main> */}
 
+      <iframe
+        src="http://192.168.0.22/"
+        width={1000}
+        height={500}
+        frameborder="0"
+      ></iframe>
       <div className={styles.main}>
         <button onMouseDown={() => onMouseDown("F", "F")} onMouseUp={onMouseUp}>
           FRENTE
