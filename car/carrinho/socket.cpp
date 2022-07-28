@@ -6,7 +6,7 @@ SocketIOclient socket;
 // inicializa o socket.io-client
 void init_socket()
 {
-  socket.begin("172.20.10.2", 4000, "/socket.io/?EIO=4");
+  socket.begin("192.168.91.246", 4000, "/socket.io/?EIO=4");
 
   socket.onEvent(socketIOEvent);
 
