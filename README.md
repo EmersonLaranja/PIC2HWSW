@@ -1,5 +1,5 @@
 
-#Robô identificador de objetos controlado remotamente
+# Robô identificador de objetos controlado remotamente
 ## Contexto
 Nós, alunos do sétimo período de engenharia de computação, desenvolvemos um projeto que integre hardware e software. Para isso criamos um robô que se movimenta a partir de comandos enviados pelos dispositivos conectados a rede. O robô, além de se movimentar, possui uma câmera onde, por inteligência artificial, ele consegue detectar os objetos em cena. Nosso objetivo final é um robô controlado remotamente que transmitirá imagens para identificação de objetos em locais de difícil acesso utilizando rede wifi.
 
@@ -32,16 +32,20 @@ Todas a programação das placas, tanto da esp32 quanto da esp8266 foram feitas 
 
 ## Tecnologias
 
-Robô
-Programação C++
-Servidor Robô
-NodeJs
-Site web
-HTML, CSS e Javascript
-Câmera
-Programação C++
-Servidor Câmera
-Colocamos a esp32 para funcionar como um servidor e configuramos na rede do roteador que utilizamos.
+**Robô**
+* Programação C++
+
+**Servidor Robô**
+* NodeJs
+
+**Site web**
+* HTML, CSS e Javascript
+
+**Câmera**
+* Programação C++
+
+**Servidor Câmera**
+* Colocamos a esp32 para funcionar como um servidor e configuramos na rede do roteador que utilizamos.
 
 
 ## Considerações finais
