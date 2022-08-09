@@ -5,8 +5,8 @@ Nós, alunos do sétimo período de engenharia de computação, desenvolvemos um
 
 
 ##  Componentes
-*  1 ESP32 cam (usada como câmera)
-* 1 ESP 8266 (usada para controlar o robô
+* ESP32 cam (usada como câmera)
+* ESP 8266 (usada para controlar o robô
 * Base do robô
 * Ponto H
 * Pacote de pilhas
@@ -15,6 +15,13 @@ Nós, alunos do sétimo período de engenharia de computação, desenvolvemos um
 * Protoboards
 
 
+## Como executar
+1. Faça um fork desse projeto
+1. Altere as configurações de wifi nos arquivos *cam/cam.ino* e *car/wifi.cpp*
+1. Faça o upload desses código com Arduino IDE
+1. Entre na pasta *car/carrinho_servidor* e digite ```npm run dev``` para executar o servidor
+1. Entre na pasta *car/site* e digite ```npm run dev``` para executar o site
+1. Abra seu navegador em localhost:3000 e controle o robô 
 
 
 
@@ -26,7 +33,7 @@ Um fluxograma geral da aplicação é mostrada abaixo:
 
 A partir dos Site Web (feito com HTML, CSS e javaScript) são enviados comandos para o servidor do Robô (feito em Node) e neste, por meio de uma comunicação feita com Socket.io enviamos os comandos para o Robô programado em uma placa Esp8266 com um .ino.
  <div align="center">
- <img src= "scheme1.png" height= "350" />
+ <img src= "scheme1.png"  />
 </div>
 
 
@@ -58,7 +65,7 @@ Todas a programação das placas, tanto da esp32 quanto da esp8266 foram feitas 
 
 
 ## Considerações finais
-
+Decidimos por usar 2 microcontroladores ESP para evitar problemas relacionados ao processamento da imagem e  controle do robô.
 
 ## Autores
 
