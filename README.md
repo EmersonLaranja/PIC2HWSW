@@ -20,6 +20,12 @@ Nós, alunos do sétimo período de engenharia de computação, desenvolvemos um
 
 ## Fluxo da aplicação
 Um fluxograma geral da aplicação é mostrada abaixo:
+ <h1 align="center">
+ <img src= ".github\images\web-main-screen.png" height= "350" />
+ <img src= ".github\images\web-give-classes-screen.png" height= "350" />
+ <img src= ".github\images\web-study-screen.png" height= "350" />
+ <img src= ".github\images\web-study-responsive-screen.png" height= "350" />
+</h1>
 
 A partir dos Site Web (feito com HTML, CSS e javaScript) são enviados comandos para o servidor do Robô (feito em Node) e neste, por meio de uma comunicação feita com Socket.io enviamos os comandos para o Robô programado em uma placa Esp8266 com um .ino.
 
