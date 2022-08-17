@@ -1,8 +1,6 @@
-// const char* ssid = "iPhone de Emerson";
-// const char* password = "123e4567";
 
-const char *ssid = "CLARO_2GF1599B";
-const char *password = "B8F1599B";
+const char *ssid = "LPRM6";
+const char *password = "51752927";
 
 const char* apssid = "esp32-cam";
 const char* appassword = "12345678";         

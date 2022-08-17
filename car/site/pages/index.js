@@ -1,8 +1,8 @@
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import socket from "../services/socketio";
-import { useEffect } from "react";
-
+import { useEffect, useState } from "react";
+import { Joystick } from "react-joystick-component";
 export default function Home() {
   useEffect(() => {
     socket.on("carrinho", (data) => {
@@ -31,6 +31,29 @@ export default function Home() {
     }
   }
 
+  let sentidoAtual = "";
+  function handleMove(e) {
+    // if (!e) return;
+    if (sentidoAtual == e.direction) return;
+    if (e.direction == "RIGHT") {
+      sendSocket(["F", "P"]);
+    }
+    if (e.direction == "LEFT") {
+      sendSocket(["P", "F"]);
+    }
+    if (e.direction == "FORWARD") {
+      sendSocket(["F", "F"]);
+    }
+    if (e.direction == "BACKWARD") {
+      sendSocket(["T", "T"]);
+    }
+    sentidoAtual = e.direction;
+  }
+
+  function handleStop(e) {
+    sendSocket(["P", "P"]);
+    sentidoAtual = "P";
+  }
   return (
     <div className={styles.container}>
       <Head>
@@ -39,8 +62,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.camControl}>
-        <iframe src="http://192.168.91.184/" frameborder="0"></iframe>
+        <iframe src="http://192.168.0.52/" frameborder="0"></iframe>
       </div>
+      <Joystick
+        size={100}
+        sticky={true}
+        baseColor="red"
+        stickColor="blue"
+        move={handleMove}
+        stop={handleStop}
+      ></Joystick>
 
       <div className={styles.carControl}>
         <div className={styles.upperButton}>
@@ -56,6 +87,8 @@ export default function Home() {
           <button
             onMouseDown={() => onMouseDown("P", "F")}
             onMouseUp={onMouseUp}
+            onTouchStart={() => onMouseDown("P", "F")}
+            onTouchEnd={onMouseUp}
           >
             ESQUERDA
           </button>
