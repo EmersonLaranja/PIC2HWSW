@@ -4,7 +4,7 @@
 
 Nós, alunos do sétimo período de engenharia de computação, desenvolvemos um projeto que integre hardware e software. Para isso criamos um robô que se movimenta a partir de comandos enviados pelos dispositivos conectados a rede. O robô, além de se movimentar, possui uma câmera acoplada na frente do mesmo que, por meio de inteligência artificial, consegue detectar os objetos em cena. O objetivo final do projeto é desenvolver um robô controlado remotamente que transmitirá imagens em tempo real para identificação de objetos em locais de difícil acesso utilizando rede wifi.
 
-A motivação por tras do projeto foi de que existem ambientes em que o acesso é de extrema dificuldade para humanos e a existencia de um robo para fazer o reconhecimento desse tipo de ambiente é de muita relevância, pensando nisso, pensamos em desenvolver uma aplicação que possibilatasse humanos a terem controle e visão nesse tipo de ambiente.
+A motivação por tras do projeto consiste no fato de que existem ambientes em que o acesso é de extrema dificuldade para humanos e a existencia de um robo para fazer o reconhecimento desse tipo de ambiente é de muita relevância, pensando nisso, pensamos em desenvolver uma aplicação que possibilatasse humanos a terem controle e visão nesse tipo de ambiente.
 
 ## Componentes
 
